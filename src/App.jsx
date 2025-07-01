@@ -3,14 +3,12 @@ import { useState,useRef} from 'react'
 import "./index.css"
 function App() {
 
-const [state,setstate] = useState(0)
-let change = useRef(0)
+
+let change = useRef()
 
  const handleclick = ()=>{
-  change.current = change.current +1
-  console.log(change);
   
-  setstate(state+1)
+ change.current.style.backgroundColor = "red"
  }
   
 //  const [length, setLength] = useState(6);
@@ -40,11 +38,22 @@ let change = useRef(0)
 // },[handleclick])
   return (
     <>
-  
-  <button onClick={handleclick}>clcick</button>
+<div className="flex gap-4 mt-4">
+  <button className="text-xl bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition" 
+  ref = {change}>
+    Change
+  </button>
 
-  <h1>{state}</h1>
-  <h1>{change.current}</h1>
+  <button
+    onClick={handleclick}
+    className="text-xl bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition"
+  >
+    Click
+  </button>
+</div>
+
+
+
  {/* <div className="max-w-md mx-auto p-6 bg-gradient-to-r from-indigo-100 to-blue-100 rounded-2xl shadow-2xl space-y-6">
   <h2 className="text-2xl font-bold text-center text-indigo-700">
     Password Generator
